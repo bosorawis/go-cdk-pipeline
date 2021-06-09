@@ -10,7 +10,11 @@ import (
 	"github.com/aws/jsii-runtime-go"
 )
 
-func NewPipelineStack(scope constructs.Construct, id string, props *GoCdkPipelineStackProps) awscdk.Stack{
+type PipelineStackProps struct {
+	awscdk.StackProps
+}
+
+func NewPipelineStack(scope constructs.Construct, id string, props *PipelineStackProps) awscdk.Stack{
 	var sprops awscdk.StackProps
 	if props != nil {
 		sprops = props.StackProps
@@ -37,7 +41,7 @@ func NewPipelineStack(scope constructs.Construct, id string, props *GoCdkPipelin
 		SynthAction: pipelines.NewSimpleSynthAction(&pipelines.SimpleSynthActionProps{
 			CloudAssemblyArtifact: cloudAssemblyArtifact,
 			SourceArtifact: sourceArtifact,
-			InstallCommands: jsii.Strings("npm ci"),
+			InstallCommands: jsii.Strings("npm ci; curl -L https://git.io/vQhTU | bash"),
 			BuildCommands: jsii.Strings("make app"),
 			SynthCommand: jsii.String("make synth"),
 		}),

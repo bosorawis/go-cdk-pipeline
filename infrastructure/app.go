@@ -8,7 +8,12 @@ import (
 	"github.com/aws/jsii-runtime-go"
 )
 
-func NewApplicationStack(scope constructs.Construct, id string, props *GoCdkPipelineStackProps) awscdk.Stack {
+
+type AppStackProps struct {
+	awscdk.StackProps
+}
+
+func NewApplicationStack(scope constructs.Construct, id string, props *AppStackProps) awscdk.Stack {
 	var sprops awscdk.StackProps
 	if props != nil {
 		sprops = props.StackProps
@@ -16,11 +21,11 @@ func NewApplicationStack(scope constructs.Construct, id string, props *GoCdkPipe
 	stack := awscdk.NewStack(scope, &id, &sprops)
 
 	// The code that defines your stack goes here
-	lambda := awslambda.NewFunction(stack, jsii.String("hello-function"), &awslambda.FunctionProps{
+	lambda := awslambda.NewFunction(stack, jsii.String("myFunction"), &awslambda.FunctionProps{
 		Handler: jsii.String("handler"),
 		Runtime: awslambda.Runtime_GO_1_X(),
 		Timeout: awscdk.Duration_Seconds(jsii.Number(3.0)),
-		Code: awslambda.Code_FromAsset(jsii.String("./bin/hello"), nil),
+		Code: awslambda.Code_FromAsset(jsii.String("./bin/lambda"), nil),
 	})
 
 	api := awsapigateway.NewRestApi(stack, jsii.String("my-api"), &awsapigateway.RestApiProps{

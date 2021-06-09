@@ -4,14 +4,10 @@ import (
 	"github.com/aws/aws-cdk-go/awscdk"
 )
 
-type GoCdkPipelineStackProps struct {
-	awscdk.StackProps
-}
-
 func main() {
 	app := awscdk.NewApp(nil)
 
-	NewPipelineStack(app, "GoPipelineStack", &GoCdkPipelineStackProps{
+	NewPipelineStack(app, "GoPipelineStack", &PipelineStackProps{
 		awscdk.StackProps{
 			Env: env(),
 		},
