@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/aws/aws-cdk-go/awscdk"
+	"github.com/aws/aws-cdk-go/awscdk/awscodebuild"
 	"github.com/aws/aws-cdk-go/awscdk/awscodepipeline"
 	"github.com/aws/aws-cdk-go/awscdk/awscodepipelineactions"
 	"github.com/aws/aws-cdk-go/awscdk/awsssm"
@@ -45,10 +46,18 @@ func NewPipelineStack(scope constructs.Construct, id string, props *PipelineStac
 			TestCommands: jsii.Strings("make test"),
 			BuildCommands: jsii.Strings("make build"),
 			SynthCommand: jsii.String("make synth"),
+			EnvironmentVariables: buildEnvVars(),
 		}),
 	})
 
-
-
 	return stack
+}
+
+func buildEnvVars() *map[string]*awscodebuild.BuildEnvironmentVariable{
+	m := make(map[string]*awscodebuild.BuildEnvironmentVariable)
+	m["GO111MODULE"] = &awscodebuild.BuildEnvironmentVariable{
+		Value: "on",
+		Type: awscodebuild.BuildEnvironmentVariableType_PLAINTEXT,
+	}
+	return &m
 }

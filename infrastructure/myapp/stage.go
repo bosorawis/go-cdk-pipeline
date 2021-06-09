@@ -1,4 +1,4 @@
-package main
+package myapp
 
 import (
 	"github.com/aws/aws-cdk-go/awscdk"
