@@ -1,0 +1,22 @@
+{
+  "name": "go-cdk-pipeline",
+  "version": "1.0.0",
+  "description": "## Installation list",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dihmuzikien/go-cdk-pipeline.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dihmuzikien/go-cdk-pipeline/issues"
+  },
+  "homepage": "https://github.com/dihmuzikien/go-cdk-pipeline#readme",
+  "dependencies": {
+    "aws-cdk": "^1.107.0"
+  }
+}

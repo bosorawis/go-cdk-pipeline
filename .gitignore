@@ -20,3 +20,4 @@ cdk.out
 
 bin/
 .idea/
+node_modules/
