@@ -11,6 +11,14 @@ full: clean test build synth
 
 app: clean test build
 
+install: install-go install-cdk
+
+install-go:
+	wget -q -O - https://git.io/vQhTU | bash
+
+install-cdk:
+	npm ci
+
 build:
 	GOOS=linux GO111MODULE=on go build -o ./$(BINARY_DIR)/lambda/handler $(APP_DIR)/lambda
 

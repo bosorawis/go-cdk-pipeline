@@ -41,8 +41,9 @@ func NewPipelineStack(scope constructs.Construct, id string, props *PipelineStac
 		SynthAction: pipelines.NewSimpleSynthAction(&pipelines.SimpleSynthActionProps{
 			CloudAssemblyArtifact: cloudAssemblyArtifact,
 			SourceArtifact: sourceArtifact,
-			InstallCommands: jsii.Strings("npm ci; curl -L https://git.io/vQhTU | bash"),
-			BuildCommands: jsii.Strings("make app"),
+			InstallCommands: jsii.Strings("make install"),
+			TestCommands: jsii.Strings("make test"),
+			BuildCommands: jsii.Strings("make build"),
 			SynthCommand: jsii.String("make synth"),
 		}),
 	})
