@@ -38,8 +38,8 @@ func NewPipelineStack(scope constructs.Construct, id string, props *GoCdkPipelin
 			CloudAssemblyArtifact: cloudAssemblyArtifact,
 			SourceArtifact: sourceArtifact,
 			InstallCommands: jsii.Strings("npm ci"),
-			BuildCommands: jsii.Strings("./test.sh; ./build.sh"),
-			SynthCommand: jsii.String("npx cdk synth"),
+			BuildCommands: jsii.Strings("make app"),
+			SynthCommand: jsii.String("make synth"),
 		}),
 	})
 

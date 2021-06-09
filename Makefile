@@ -9,6 +9,8 @@ ci: test
 
 full: clean test build synth
 
+app: clean test build
+
 build:
 	go build -o ./$(BINARY_DIR)/lambda/handler $(APP_DIR)/lambda
 
