@@ -63,19 +63,19 @@ func NewPipelineStack(scope constructs.Construct, id string, props *PipelineStac
 			},
 		},
 	})
-	prodStage := myapp.NewAppStage(stack, "prod", &myapp.AppStageProps{
-		StageProps: awscdk.StageProps{
-			Env: &awscdk.Environment{
-				Account: stack.Account(),
-				Region: jsii.String("us-west-2"),
-			},
-		},
-	})
 	pipeline.AddApplicationStage(devStage, nil)
 
-	pipeline.AddApplicationStage(prodStage, &pipelines.AddStageOptions{
-		ManualApprovals: jsii.Bool(true),
-	})
+	// prodStage := myapp.NewAppStage(stack, "prod", &myapp.AppStageProps{
+	// 	StageProps: awscdk.StageProps{
+	// 		Env: &awscdk.Environment{
+	// 			Account: stack.Account(),
+	// 			Region: jsii.String("us-west-2"),
+	// 		},
+	// 	},
+	// })
+	// pipeline.AddApplicationStage(prodStage, &pipelines.AddStageOptions{
+	// 	ManualApprovals: jsii.Bool(true),
+	// })
 	return stack
 }
 
