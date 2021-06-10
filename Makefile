@@ -17,7 +17,8 @@ install:
 build:
 	GOOS=linux GO111MODULE=on go build -o ./$(BINARY_DIR)/lambda/handler $(APP_DIR)/lambda
 
-	cdk synth
+synth:
+	npx cdk synth
 
 clean:
 	rm -rf $(BINARY_DIR)

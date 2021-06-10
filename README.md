@@ -60,7 +60,7 @@ Clone this repo and edit the following file to use your Github information
 
 ### First Deployment
 ```bash
-make all
+make app
 cdk synth
 cdk deploy
 ```
