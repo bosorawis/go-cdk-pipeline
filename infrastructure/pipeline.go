@@ -9,6 +9,7 @@ import (
 	"github.com/aws/aws-cdk-go/awscdk/pipelines"
 	"github.com/aws/constructs-go/constructs/v3"
 	"github.com/aws/jsii-runtime-go"
+	"go-cdk-pipeline/infrastructure/myapp"
 )
 
 type PipelineStackProps struct {
@@ -34,7 +35,7 @@ func NewPipelineStack(scope constructs.Construct, id string, props *PipelineStac
 		ConnectionArn: awsssm.StringParameter_ValueForStringParameter(stack, jsii.String("GITHUB_CONNECTOR_ARN"), nil),
 	})
 
-	_ = pipelines.NewCdkPipeline(stack, jsii.String("cicdPipeline"), &pipelines.CdkPipelineProps{
+	pipeline := pipelines.NewCdkPipeline(stack, jsii.String("cicdPipeline"), &pipelines.CdkPipelineProps{
 		CloudAssemblyArtifact: cloudAssemblyArtifact,
 		SourceAction: githubSource,
 		SelfMutating: jsii.Bool(true),
@@ -54,6 +55,15 @@ func NewPipelineStack(scope constructs.Construct, id string, props *PipelineStac
 		}),
 	})
 
+	devStage := myapp.NewAppStage(stack, "develop", &myapp.AppStageProps{
+		StageProps: awscdk.StageProps{
+			Env: &awscdk.Environment{
+				Account: stack.Account(),
+				Region: jsii.String("us-west-2"),
+			},
+		},
+	})
+	pipeline.AddApplicationStage(devStage, nil)
 	return stack
 }
 

@@ -9,7 +9,7 @@ type AppStageProps struct {
 	awscdk.StageProps
 }
 
-func AppStage(scope constructs.Construct, id string, props *AppStageProps) awscdk.Stage {
+func NewAppStage(scope constructs.Construct, id string, props *AppStageProps) awscdk.Stage {
 	var sprops awscdk.StageProps
 	if props != nil {
 		sprops = props.StageProps
