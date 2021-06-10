@@ -30,8 +30,6 @@ cdk --version
 #### Bootstrap your AWS account
 ```bash
 cdk bootstrap 
-# If you're bootstrapping another account
-# cdk bootstrap aws://ACCOUNT-NUMBER-1/REGION-1 aws://ACCOUNT-NUMBER-2/REGION-2 ... 
 ```
 more information about `cdk bootstrap` [here](https://docs.aws.amazon.com/cdk/latest/guide/bootstrapping.html)
 
