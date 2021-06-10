@@ -44,9 +44,9 @@ func NewPipelineStack(scope constructs.Construct, id string, props *PipelineStac
 			SourceArtifact: sourceArtifact,
 			InstallCommands: jsii.Strings(
 				"make install",
-				"wget https://golang.org/dl/go1.16.5.linux-amd64.tar.gz",
-				"rm -rf /usr/local/go && tar -C /usr/local -xzf go1.16.5.linux-amd64.tar.gz",
-				),
+				"cd $HOME/.goenv && git pull --ff-only && cd -",
+				"goenv install 1.16.4",
+				"goenv local 1.16.4"),
 			TestCommands: jsii.Strings("make test"),
 			BuildCommands: jsii.Strings("make build"),
 			SynthCommand: jsii.String("make synth"),
