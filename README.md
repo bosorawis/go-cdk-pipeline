@@ -7,6 +7,10 @@
 - [go1.16.5](https://golang.org/doc/install)
 - [aws-cli](https://aws.amazon.com/cli/)
 
+## NOTES
+This demo only supports **single region/account** deployment. 
+The Pipeline construct **CAN** support multi-region multi-account pipeline but that requires additional setup and resources including KMS key which does not have a free tier.
+
 ## Structure
 ```
 .
