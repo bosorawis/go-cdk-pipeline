@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/aws/aws-cdk-go/awscdk"
+	"github.com/aws/jsii-runtime-go"
 )
 
 func main() {
@@ -16,5 +17,7 @@ func main() {
 }
 
 func env() *awscdk.Environment {
-	return nil
+	return &awscdk.Environment{
+		Region: jsii.String("us-west-2"),
+	}
 }
